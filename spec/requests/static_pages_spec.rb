@@ -57,7 +57,5 @@ describe "Static pages" do
     page.should_not have_selector 'title', text: full_title('| Home')
   end
    
-   
-   
-   
+
 end
