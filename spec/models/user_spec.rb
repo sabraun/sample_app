@@ -37,6 +37,8 @@ describe User do
     it { should be_valid }
     it { should_not be_admin }
     
+
+    
   describe "with admin attribute set to 'true'" do
     before do
       @user.save!
@@ -44,10 +46,10 @@ describe User do
     end
 
     it { should be_admin }
+
+    
   end
-    
-    
-  
+
   
     
   describe "with a password that's too short" do
@@ -72,6 +74,8 @@ describe User do
   end
     
     
+  
+  
   describe "when password is not present" do
     before { @user.password = @user.password_confirmation = " " }
     it { should_not be_valid }
@@ -100,6 +104,7 @@ describe User do
   end
   
   
+  
   describe "when email address is already taken" do
     before do
       user_with_same_email = @user.dup
@@ -110,10 +115,12 @@ describe User do
   end
   
   
+  
   describe "when email is not present" do
     before { @user.email = " " }
     it { should_not be_valid }
   end
+  
   
   
   describe "when email format is invalid" do
@@ -127,6 +134,8 @@ describe User do
     end
   end
   
+  
+  
   describe "when email format is valid" do
     it "should be valid" do
       addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
@@ -136,6 +145,8 @@ describe User do
       end      
     end
   end
+  
+  
   
   describe "email address with mixed case" do
     let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
@@ -147,12 +158,20 @@ describe User do
     end
   end
   
+  
+  
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
   
+  
+  
+  
 
+  
+  
+  
 
 end
 
