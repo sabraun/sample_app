@@ -96,6 +96,41 @@ describe "Static pages" do
     click_link "sample app"
     page.should_not have_selector 'title', text: full_title('| Home')
   end
-   
+
+  
+  
+  
+  
+  
+  
+  
+  describe "test stat count" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        FactoryGirl.create(:micropost, user: user, content: "Lorem")
+        FactoryGirl.create(:micropost, user: user, content: "Ipsum")
+        sign_in user
+        visit root_path
+      end
+      # test count before adding follower
+      it { should have_link("0 followers", href: followers_user_path(user)) }
+
+      describe "follower/following counts" do
+        let(:other_user) { FactoryGirl.create(:user) }
+        before do
+          other_user.follow!(user)
+          visit root_path
+        end
+        # test count after adding follower
+        it { should have_link("1 followers", href: followers_user_path(user)) }
+      end
+    end
+
+  
+  
+  
+  
+  
+  
 
 end

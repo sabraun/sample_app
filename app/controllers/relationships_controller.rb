@@ -1,6 +1,6 @@
 class RelationshipsController < ApplicationController
   before_filter :signed_in_user
-  
+  #exersize 11-2
   respond_to :html, :js
   
   def create
